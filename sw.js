@@ -1,5 +1,5 @@
-/* Tres países: guarda la app en el móvil para usarla sin internet */
-const V = "tp-tres-paises-v1"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
+/* Escapada a Europa: guarda la app en el móvil para usarla sin internet */
+const V = "tp-escapada-v2"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
 const FILES = ["./", "index.html", "manifest.json", "icono.png", "icono-192.png", "favicon-32.png", "apple-touch-icon.png",
   "fotos/cordoba.jpg", "fotos/sevilla.jpg", "fotos/granada.jpg", "fotos/barcelona.jpg", "fotos/paris.jpg", "fotos/lyon.jpg", "fotos/venecia.jpg", "fotos/florencia.jpg", "fotos/roma.jpg", "fotos/madrid.jpg"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(V).then(c => c.addAll(FILES.map(f => new Request(f, { cache: "reload" })))).then(() => self.skipWaiting())); });
