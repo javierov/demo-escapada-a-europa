@@ -1,0 +1,16 @@
+{
+  "name": "Tres países",
+  "short_name": "Tres países",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f7f5",
+  "theme_color": "#f7f7f5",
+  "icons": [
+    {"src": "icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icono.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icono.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+    {"src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png"}
+  ]
+}
