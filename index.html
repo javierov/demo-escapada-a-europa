@@ -474,6 +474,69 @@ button.ft{font:inherit}
 .memsg button{display:grid;place-items:center;width:26px;height:26px;padding:0;border:0;border-radius:50%;background:rgb(255 255 255/.12);color:#fff;cursor:pointer}
 .thx,.tha{display:grid;place-items:center;padding:0;line-height:0}.thx svg,.tha svg{display:block}
 
+/* ---------- adornos al estilo de «Escapada a Toledo» ---------- */
+.bh .bim{width:64px;height:64px;flex:none;margin:-6px 4px -6px -4px;border-radius:50%;box-shadow:0 4px 12px rgb(0 0 0/.45)}
+@font-face{font-family:"Marcellus";src:url(fonts/marcellus.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+.bh.bhg{position:relative;isolation:isolate;font-family:"Marcellus",Georgia,serif;font-weight:400;font-size:24px;letter-spacing:0;color:#fff}
+.bh.bhg::before{content:"";position:absolute;z-index:-1;left:44px;right:-1px;top:50%;height:42px;transform:translateY(-50%);background:linear-gradient(180deg,#4a5a70,#3a4759);
+  clip-path:polygon(0 0,100% 0,calc(100% - 16px) 50%,100% 100%,0 100%);box-shadow:0 2px 6px rgb(0 0 0/.3)}
+.bh.bhg .bim{position:relative;z-index:1}
+.wxt{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:10px;align-items:center}.wxi{width:58px;height:58px;object-fit:contain}
+.wxn{font-size:46px;font-weight:300;letter-spacing:-.04em;line-height:1;color:var(--steel2)}
+.wxt b{display:block;font-size:16px}.wxt small{display:block;color:var(--soft);font-size:13.5px}
+.wxh{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:12px}
+.wxh span{display:grid;justify-items:center;gap:2px;border:1px solid var(--line);border-radius:14px;padding:7px 2px;text-align:center}
+.wxhi{width:30px;height:30px;object-fit:contain}.wxh b{font-size:15px}.wxh small{font-size:11.5px;color:var(--soft)}
+/* título gráfico: logo con espada; un pequeño destello corre por el filo y chispea en la punta */
+.brand.logo{display:block!important;position:relative;overflow:visible!important;grid-column:1/-1;margin:6px -8px 2px!important;padding:0!important;background:none!important;line-height:0}
+.brand.logo img{display:block;width:100%;height:auto}
+.brand.logo .filo{position:absolute;left:99.5%;top:71.3%;width:12px;height:12px;margin:-6px 0 0 -6px;pointer-events:none;
+  background:radial-gradient(circle,rgb(255 255 255/.95) 0 18%,rgb(255 255 255/0) 60%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0C12.6 8 16 11.4 24 12 16 12.6 12.6 16 12 24 11.4 16 8 12.6 0 12 8 11.4 11.4 8 12 0Z' fill='%23fff'/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 0 2px rgb(255 255 255/.8));opacity:0;transform:scale(0);
+  animation:glint 9s ease-out infinite}
+@keyframes glint{
+  0%,83%{opacity:0;transform:scale(0) rotate(0)}
+  86%{opacity:1;transform:scale(1.2) rotate(70deg)}
+  92%,100%{opacity:0;transform:scale(0) rotate(150deg)}}
+/* luz que recorre el contorno de la espada y de las letras, de la empuñadura a la punta */
+.brand.logo .contorno{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgb(255 255 255/0),rgb(255 250 235/.95) 50%,rgb(255 255 255/0)) 0 0/22% 100% no-repeat;
+  -webkit-mask:url(fotos/titulo-filo.webp) center/100% 100% no-repeat;mask:url(fotos/titulo-filo.webp) center/100% 100% no-repeat;
+  filter:drop-shadow(0 0 2px rgb(255 255 255/.7));animation:contorno 9s ease-in-out infinite;background-position:-30% 0}
+@keyframes contorno{0%,62%{background-position:-30% 0}84%,100%{background-position:130% 0}}
+@media (prefers-reduced-motion:reduce){.brand.logo .filo,.brand.logo .contorno{animation:none;opacity:0}}
+
+/* estilos claros: el logo va sobre una banda oscura para que se lea */
+[data-theme="luminoso"] .brand.logo,[data-theme="cobalto"] .brand.logo,[data-theme="calido"] .brand.logo,[data-theme="sepia"] .brand.logo,[data-theme="mar"] .brand.logo,[data-theme="nordico"] .brand.logo,[data-theme="rosa"] .brand.logo{background:#101318!important;border-radius:14px;padding:0!important;outline:8px solid #101318;outline-offset:-1px;margin:6px 0 4px!important;box-shadow:0 2px 8px rgb(0 0 0/.18)}
+
+.rows .bhg,#s-city .bhg{margin:18px 0 10px;min-height:64px;display:flex;align-items:center;gap:10px}
+.rows .bhg:first-child{margin-top:4px}
+#cwx{margin-bottom:12px}
+.wxd{list-style:none;margin:12px 0 0;padding:0}
+.wxd li{display:grid;grid-template-columns:62px 34px minmax(0,1fr) auto;gap:8px;align-items:center;padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+.wxd li b{font-weight:700}.wxd li small{color:var(--soft);font-size:13px}
+.wxd .t2{font-weight:700;white-space:nowrap}.wxd .t2 small{font-weight:400}
+.wxd li.now{font-weight:700}
+
+/* título como ventana: dentro de las letras pasan las fotos de las ciudades, oscurecidas, despacio y fundiéndose */
+.brand.mk{position:relative}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+.brand.mk .tl{display:inline-block;color:transparent;-webkit-background-clip:text;background-clip:text;background-color:var(--title);background-repeat:no-repeat;background-size:200% auto;background-position:0% 45%;-webkit-text-stroke:1px rgb(0 0 0/.28);
+  filter:brightness(1.3) contrast(1.05) saturate(1.05);opacity:0;transition:opacity 2.2s ease;animation:tpan 18s ease-in-out infinite alternate}
+.brand.mk .tl.on{opacity:1}
+.brand.mk .b{position:absolute;left:0;top:0;animation-delay:-9s}
+[data-theme="luminoso"] .brand.mk .tl,[data-theme="cobalto"] .brand.mk .tl,[data-theme="calido"] .brand.mk .tl,[data-theme="sepia"] .brand.mk .tl,[data-theme="mar"] .brand.mk .tl,[data-theme="nordico"] .brand.mk .tl,[data-theme="rosa"] .brand.mk .tl{filter:brightness(.7) contrast(1.15) saturate(1.1)}
+@keyframes tpan{0%{background-position:0% 55%}100%{background-position:100% 72%}}
+@media (prefers-reduced-motion:reduce){.brand.mk .tl{animation:none;transition:none}}
+}
+/* título algo más grande: letras un poco más juntas y aprovechando el ancho */
+.brand.mk{letter-spacing:-.05em;margin-left:-4px!important;margin-right:-6px!important;padding-bottom:.08em}
+/* título en dos líneas, centrado */
+.hh .brand.mk{grid-column:1/-1;justify-self:stretch;text-align:center;margin-left:0!important;margin-right:0!important;font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-weight:400;letter-spacing:0;line-height:1.05}
+.brand.mk .tl{display:block}
+.brand.mk .b{right:0}
+@font-face{font-family:"Anton";src:url(fonts/anton.woff2) format("woff2");font-weight:400;font-display:swap}
+
 </style>
 <style>/* Leaflet 1.9.4 — BSD-2-Clause, © Volodymyr Agafonkin */
 /* required styles */
@@ -1151,13 +1214,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <div class="app">
 <section id="s-viaje">
   <div class="bnr" aria-hidden="true" id="bnr"></div>
-  <div class="hh"><h1 class="brand">Escapada a Europa</h1><div class="ctr" id="count" hidden></div><div class="hs"><div><p class="sub">España · Francia · Italia</p><p class="sub2">19 de noviembre – 7 de diciembre de 2026</p></div><button type="button" class="thb" id="thOpen" aria-haspopup="dialog" aria-controls="thSheet"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5c0-4-4-7.4-9-7.4Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>Estilo app</button></div></div>
+  <div class="hh"><h1 class="brand mk"><span class="tl a on">Escapada a Europa</span><span class="tl b" aria-hidden="true">Escapada a Europa</span></h1><div class="ctr" id="count" hidden></div><div class="hs"><div><p class="sub">España · Francia · Italia</p><p class="sub2">19 de noviembre – 7 de diciembre de 2026</p></div><button type="button" class="thb" id="thOpen" aria-haspopup="dialog" aria-controls="thSheet"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5c0-4-4-7.4-9-7.4Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>Estilo app</button></div></div>
   <div class="carw"><div class="car" id="car"></div>
     <button type="button" class="arr l" id="arrL" aria-label="Ciudad anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button type="button" class="arr r" id="arrR" aria-label="Ciudad siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
   <div class="dots" id="dots" aria-hidden="true"></div>
   <div class="pad" id="nowbox"></div>
+  <div class="pad"><div class="box blk" id="wxbox" hidden></div></div>
   <div class="pad">
     <h2><span id="nxt-h">Día a día</span><button type="button" data-go="trenes">Trenes</button></h2>
     <div class="rows" id="next"></div>
@@ -1168,7 +1232,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <div class="ph scrim hero" id="hero"></div>
   <div class="sheet">
     <div class="stats" id="stats"></div>
-    <h2>Día a día</h2>
+    <div class="box blk" id="cwx" hidden></div>
+    <h3 class="bh bhg" id="chead"></h3>
     <div id="cdays"></div>
   </div>
 </section>
@@ -1452,6 +1517,10 @@ $("bnr").innerHTML=STOPS.map(([c])=>`<div class="bs">${ph(c)}</div>`).join("")+S
 
 /* desplazamiento seguro: el desplazamiento suave a veces no hace nada en Chrome Android */
 function goTo(el,off){if(!el)return;const y=Math.max(0,Math.round(el.getBoundingClientRect().top+scrollY-(off==null?72:off)));try{window.scrollTo({top:y,behavior:"smooth"})}catch(e){window.scrollTo(0,y)}setTimeout(()=>{if(Math.abs(scrollY-y)>30)window.scrollTo(0,y)},700)}
+/* título: las fotos de las ciudades se turnan dentro de las letras */
+{const L=[...document.querySelectorAll(".brand.mk .tl")],F=STOPS.map(([c])=>`fotos/${C[c].f}.jpg`);let k=0,cur=0;
+ const set=(el,i)=>el.style.backgroundImage=`url(${F[i%F.length]})`;set(L[0],0);set(L[1],1);
+ if(L.length===2&&!matchMedia("(prefers-reduced-motion: reduce)").matches)setInterval(()=>{if(document.hidden)return;k++;const nx=1-cur;set(L[nx],k);L[nx].classList.add("on");L[cur].classList.remove("on");cur=nx},6000)}
 /* ---------- inicio ---------- */
 function fitHoy(){const sv=$("s-viaje"),car=$("car");if(sv.hidden||!car.children.length)return;const cs=[...car.children];
   const fit=()=>{cs.forEach(c=>{c.style.height="";c.style.aspectRatio=""});const w=cs[0].offsetWidth,top=car.getBoundingClientRect().top+scrollY,dots=$("dots").hidden?0:$("dots").offsetHeight+10;
@@ -1491,7 +1560,9 @@ function renderHome(){
   $("nowbox").innerHTML=h;requestAnimationFrame(fitHoy);
   $("nxt-h").textContent=t.ph==="trip"?"Lo que viene":"Día a día";
   const list=t.ph==="trip"?DAYS.filter(x=>x.d>t.d):DAYS;
-  $("next").innerHTML=list.map(x=>`<button type="button" class="row" data-open="${x.c}" data-day="${x.d}">${ph(x.c)}<span><span class="dt">${wd(x.d)} ${dn(x.d)} ${mc(x.d)} · ${dayCities(x)}</span><b>${esc(x.t)}</b><small>${esc(x.w)}</small></span>${ico("chev",2)}</button>`).join("")||`<p class="note">Último día del viaje.</p>`;
+  let lp="";
+  $("next").innerHTML=list.map(x=>{const p=C[x.c].p,hd=p!==lp?`<h3 class="bh bhg"><img class="bim" src="fotos/paises/${p}.png" alt="">${PAIS[p]}</h3>`:"";lp=p;return hd+`<button type="button" class="row" data-open="${x.c}" data-day="${x.d}">${ph(x.c)}<span><span class="dt">${wd(x.d)} ${dn(x.d)} ${mc(x.d)} · ${dayCities(x)}</span><b>${esc(x.t)}</b><small>${esc(x.w)}</small></span>${ico("chev",2)}</button>`}).join("")||`<p class="note">Último día del viaje.</p>`;
+  renderWxHome();
   if(t.ph==="trip"&&!carMoved){const x=dayOf(t.d),k2=x?STOPS.findIndex(n=>n[0]===x.c):0,car=$("car");if(k2>0)requestAnimationFrame(()=>{car.scrollLeft=car.children[k2].offsetLeft-car.firstElementChild.offsetLeft;carState()})}
 }
 $("car").innerHTML=STOPS.map(([c,n,a,b])=>`<button type="button" class="cc" data-open="${c}" aria-label="${c}, ${range(a,b)}">${ph(c,"scrim")}<span class="n">${range(a,b)}</span><span class="tx"><b>${c}</b><span>${PAIS[C[c].p]} · ${nights(n)}</span></span></button>`).join("");
@@ -1504,8 +1575,48 @@ $("arrL").onclick=()=>{carMoved=true;step(-1)};$("arrR").onclick=()=>{carMoved=t
 new ResizeObserver(carState).observe($("car"));
 let carMoved=false;
 
+
+/* ---------- el tiempo (Open-Meteo), con los dibujos de «Escapada a Toledo» ---------- */
+const NORM={"Córdoba":[18,7],"Sevilla":[19,8],"Granada":[15,3],"Barcelona":[16,8],"Roma":[15,6],"Florencia":[12,3],"Venecia":[10,3],"Lyon":[8,2],"París":[9,4],"Madrid":[12,3]};
+const WIMG=c=>c===0?"sol":c<=2?"solnube":c<=48?"nubes":c<=67?"lluvia":c<=82?"lluvia":c<=86?"nubes":"tormenta";
+const wim=(c,cl)=>`<img class="${cl}" src="fotos/tiempo/${WIMG(c)}.png" alt="">`;
+const WTX=c=>c===0?"Despejado":c<=2?"Algo nuboso":c===3?"Nublado":c<=48?"Niebla":c<=57?"Llovizna":c<=67?"Lluvia":c<=77?"Nieve":c<=82?"Chubascos":c<=86?"Nieve":"Tormenta";
+const isoD=d=>{const x=dt(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,"0")}-${String(x.getDate()).padStart(2,"0")}`};
+const wxOf=c=>LS("wx-"+C[c].slug);
+const wxBusy={};
+async function loadWx(c,done){const old=wxOf(c);if(old&&Date.now()-old.at<3600e3)return;if(wxBusy[c])return;wxBusy[c]=1;
+  try{const [,,a,b]=stopOf(c),today=new Date(),lim=new Date(today.getFullYear(),today.getMonth(),today.getDate()+15);
+    let s=dt(a),e=dt(b);if(s<new Date(today.getFullYear(),today.getMonth(),today.getDate()))s=new Date(today.getFullYear(),today.getMonth(),today.getDate());if(e>lim)e=lim;if(s>e)return;
+    const f=x=>`${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,"0")}-${String(x.getDate()).padStart(2,"0")}`;
+    const [la,lo]=C[c].geo,r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${la}&longitude=${lo}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&hourly=temperature_2m,precipitation_probability,weather_code&timezone=Europe%2FMadrid&start_date=${f(s)}&end_date=${f(e)}`);
+    if(!r.ok)return;const j=await r.json(),D={},H={};
+    j.daily.time.forEach((t,i)=>D[t]=[j.daily.weather_code[i],Math.round(j.daily.temperature_2m_max[i]),Math.round(j.daily.temperature_2m_min[i]),j.daily.precipitation_probability_max[i]]);
+    j.hourly.time.forEach((t,i)=>{const h=+t.slice(11,13);if([10,13,16,19].includes(h)){(H[t.slice(0,10)]=H[t.slice(0,10)]||{})[h]=[j.hourly.weather_code[i],Math.round(j.hourly.temperature_2m[i]),j.hourly.precipitation_probability[i]]}});
+    SS("wx-"+C[c].slug,{at:Date.now(),D,H});done&&done()}catch(e){}finally{wxBusy[c]=0}}
+function ropa(mx,mn,pp){const p=[mn<=4?"Abrigo de invierno, bufanda y guantes":mx<=13?"Chaqueta abrigada y ropa en capas":"Chaqueta ligera y ropa en capas"];if(pp>=50)p.push("paraguas plegable");else if(pp>=25)p.push("un paraguas pequeño por si acaso");return p.join(", ")+"."}
+/* portada: el tiempo de hoy en la ciudad donde está */
+function renderWxHome(){const t=T(),bx=$("wxbox");if(t.ph!=="trip"){bx.hidden=true;return}const x=dayOf(t.d);if(!x){bx.hidden=true;return}
+  const h=SIMH!==null?SIMH:new Date().getHours(),c=h<13&&x.cs.length>1?x.cs[0]:x.c,w=wxOf(c),iso=isoD(x.d),d=w&&w.D[iso];
+  bx.hidden=false;
+  if(!d){const [mx,mn]=NORM[c];bx.innerHTML=`<h3 class="bh"><span class="bi">${ico("sunny",2)}</span>El tiempo hoy en ${esc(c)}</h3>
+    <div class="wxt">${wim(2,"wxi")}<span class="wxn">${mx}°</span><span><b>Lo normal estos días</b><small>Máxima ${mx}° · mínima ${mn}°</small></span></div>
+    <p class="note" style="margin-top:10px">${ropa(mx,mn,0)} La previsión real aparece al abrir la app con internet.</p>`;loadWx(c,renderWxHome);return}
+  const hh=Object.entries((w.H||{})[iso]||{}),at=new Date(w.at);
+  bx.innerHTML=`<h3 class="bh"><span class="bi">${ico("sunny",2)}</span>El tiempo hoy en ${esc(c)}</h3>
+  <div class="wxt">${wim(d[0],"wxi")}<span class="wxn">${d[1]}°</span><span><b>${WTX(d[0])}</b><small>Máxima ${d[1]}° · mínima ${d[2]}°${d[3]!=null?` · lluvia ${d[3]}%`:""}</small></span></div>
+  ${hh.length?`<div class="wxh">${hh.map(([H,[cc,tt,pp]])=>`<span><small>${H}:00</small>${wim(cc,"wxhi")}<b>${tt}°</b>${pp>=20?`<small>${pp}%</small>`:""}</span>`).join("")}</div>`:""}
+  <p class="note" style="margin-top:10px">${ropa(d[1],d[2],d[3]||0)}</p>
+  <p class="note" style="font-size:12.5px;margin-top:6px">Previsión de Open-Meteo, actualizada el ${at.getDate()} a las ${String(at.getHours()).padStart(2,"0")}:${String(at.getMinutes()).padStart(2,"0")}.</p>`;loadWx(c,renderWxHome)}
+/* página de la ciudad: un día por línea */
+function renderWxCity(c){const bx=$("cwx"),w=wxOf(c),[,,a,b]=stopOf(c),t=T(),[mx,mn]=NORM[c];
+  const days=[];for(let d=a;d<=b;d++)days.push(d);
+  const rows=days.map(d=>{const v=w&&w.D[isoD(d)];return `<li class="${t.ph==="trip"&&t.d===d?"now":""}"><span>${wd(d)} ${dn(d)}</span>${wim(v?v[0]:2,"wxhi")}<span>${v?WTX(v[0]):"<small>Lo normal</small>"}${v&&v[3]>=20?` <small>· lluvia ${v[3]}%</small>`:""}</span><span class="t2">${v?v[1]:mx}° <small>${v?v[2]:mn}°</small></span></li>`}).join("");
+  bx.hidden=false;bx.innerHTML=`<h3 class="bh"><span class="bi">${ico("sunny",2)}</span>El tiempo en ${esc(c)}</h3><ul class="wxd">${rows}</ul>
+  <p class="note" style="font-size:12.5px;margin-top:8px">${w?"Previsión de Open-Meteo.":"Sin previsión todavía: se muestra lo normal en estas fechas."} La previsión llega hasta unos 15 días antes.</p>`;
+  loadWx(c,()=>{if(!$("s-city").hidden&&$("hero").querySelector(".tx b")?.textContent===c)renderWxCity(c)})}
+
 /* ---------- ciudad ---------- */
-const plan=([ic,tx,q,tg])=>`<li><span class="ic">${ico(EM[ic])}</span><span class="tx">${esc(tx)}${tg?`<span class="tag${tg===4?" pc":""}">${TAG[tg]}</span>`:""}${q?`<span class="adr">${ico("pin",2)}<a href="${route(q)}" target="_blank" rel="noopener">Ver en Google Maps</a></span>`:""}</span></li>`;
+const plan=([ic,tx,q,tg])=>`<li><span class="ic">${ico(EM[ic])}</span><span class="tx">${esc(tx)}${tg?`<span class="tag${tg===4?" pc":""}">${TAG[tg]}</span>`:""}${q?`<span class="adr">${ico("pin",2)}<a href="${route(q)}" target="_blank" rel="noopener" aria-label="${esc(q)} en Google Maps">Ver en Google Maps</a></span>`:""}</span></li>`;
 function openCity(c,d){
   const [,n,a,b]=stopOf(c),days=DAYS.filter(x=>x.cs.includes(c)),t=T();
   if(!d||!days.some(x=>x.d===d))d=t.ph==="trip"&&days.some(x=>x.d===t.d)?t.d:days[0].d;
@@ -1514,6 +1625,7 @@ function openCity(c,d){
   const its=days.flatMap(x=>x.it).filter(i=>i[4]===c);
   const rs=RES.filter(r=>r[2].startsWith(c+" ")||r[2].includes(c)),done=rs.filter(r=>(RS[r[0]]||{}).ok).length;
   $("stats").innerHTML=`<div><small>Noches</small><b>${n}</b></div><div><small>Planes</small><b>${its.length}</b></div><div><small>Reservas</small><b>${done}/${rs.length}</b></div>`;
+  $("chead").innerHTML=`<img class="bim" src="fotos/paises/${C[c].p}.png" alt="">Día a día en ${esc(c)}`;renderWxCity(c);
   $("cdays").innerHTML=days.map(x=>{const i=DAYS.indexOf(x),pv=DAYS[i-1],nx=DAYS[i+1];return `<article class="day${x.d===d?" open":""}${t.ph==="trip"&&t.d===x.d?" today":""}" id="d${x.d}"><button type="button" class="dh" aria-expanded="${x.d===d}"><span class="db"><b>${dn(x.d)}</b><small>${wd(x.d)}</small></span><span class="t"><b>${esc(x.t)}</b><small>${esc(x.w)}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
   <div class="det"><ul class="steps">${x.it.map((it,j)=>{const nc=it[4]!==(x.it[j-1]||[])[4]&&x.cs.length>1;return (nc?`<li class="cty" style="--c:${C[it[4]].c}"><i></i>${it[4]}</li>`:"")+plan(it)}).join("")}</ul>
   <div class="dnav"><button type="button" data-gd="${pv?pv.d:""}"${pv?"":" disabled"}>← ${pv?wd(pv.d)+" "+dn(pv.d):""}</button><button type="button" data-gd="${nx?nx.d:""}"${nx?"":" disabled"}>${nx?wd(nx.d)+" "+dn(nx.d):""} →</button></div></div></article>`}).join("");
@@ -1556,7 +1668,7 @@ function meControl(){const C=L.Control.extend({options:{position:"topright"},onA
 
 let LM=null,MK=[],mv="all",tilesOk=false;
 const MV={all:"Todo",es:"España",fr:"Francia",it:"Italia"};
-const popHtml=(c,i)=>{const [,n,a,b]=stopOf(c);return `<div class="lpop"><b>${i+1}. ${esc(c)}</b><small>${range(a,b)} · ${nights(n)}</small><button type="button" class="btn" data-open="${c}">Ver los días</button><a class="lk" href="${map(c)}" target="_blank" rel="noopener">Ver en Google Maps</a></div>`};
+const popHtml=(c,i)=>{const [,n,a,b]=stopOf(c);return `<div class="lpop"><b>${i+1}. ${esc(c)}</b><small>${range(a,b)} · ${nights(n)}</small><button type="button" class="btn" data-open="${c}">Ver los días</button><a class="lk" href="${map(c)}" target="_blank" rel="noopener" aria-label="${esc(c)} en Google Maps">Ver en Google Maps</a></div>`};
 function initMap(){if(LM||!window.L)return;
   LM=L.map("mapw",{zoomControl:true,scrollWheelZoom:false,tap:true,dragging:!L.Browser.mobile,touchZoom:true});LM.attributionControl.setPrefix(false);
   const tl=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{subdomains:"abc",maxZoom:19,crossOrigin:true,attribution:"© OpenStreetMap"}).addTo(LM);
@@ -1683,6 +1795,53 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-thm]");if(
 const ar=e.target.closest(".tha");if(ar&&tc){const w=tc.querySelector(".tcard").getBoundingClientRect().width+8;tc.scrollBy({left:ar.classList.contains("l")?-w:w,behavior:"smooth"});return}
 if(e.target.closest("#thOpen"))show(true);else if(e.target.closest("#thClose")||e.target===sh)show(false)});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sh&&!sh.hidden)show(false)})})();
+</script>
+<script>
+/* Estadísticas anónimas para Javier (GoatCounter): sin cookies ni datos personales.
+   Solo cuenta en la versión publicada en github.io. Para que no cuenten tus visitas: abre cualquier app una vez con ?yo, o usa «No contar este equipo» en el panel. Vale para todas las apps de javierov.github.io en ese navegador. */
+(function(){
+  const GC="https://javierov.goatcounter.com/count", APP="Europa", Q="tp-gcq";
+  let test=/[?&]gctest\b/.test(location.search);
+  try{if(/[?&]yo\b/.test(location.search))localStorage.setItem("javierov-nostats","1")}catch(e){}
+  let off=false;try{off=localStorage.getItem("javierov-nostats")==="1"||localStorage.getItem("tp-nostats")==="1"||!!sessionStorage.getItem("tp-sim")}catch(e){}
+  if(!test&&(off||!/github\.io$/.test(location.hostname)))return;
+  /* demos: un enlace con ?de=nombre marca ese navegador (p. ej. ?de=cata); ?de=no lo quita */
+  let DE="";try{const m=location.search.match(/[?&]de=([^&]*)/);if(m){const v=decodeURIComponent(m[1]).toLowerCase().replace(/[^a-z0-9ñáéíóú-]/g,"").slice(0,20);if(!v||v==="no")localStorage.removeItem("javierov-demo");else localStorage.setItem("javierov-demo",v)}DE=localStorage.getItem("javierov-demo")||""}catch(e){}
+  const LOG=window.etStatsLog=[];
+  function url(p,ev,t){const u=new URLSearchParams({p:p,t:t||p,s:screen.width,rnd:Math.random().toString(36).slice(2)});if(ev)u.set("e","true");else if(document.referrer)u.set("r",document.referrer);return GC+"?"+u}
+  function load(){try{return JSON.parse(localStorage.getItem(Q)||"[]")}catch(e){return[]}}
+  function save(a){try{localStorage.setItem(Q,JSON.stringify(a.slice(-80)))}catch(e){}}
+  function send(u){if(test){LOG.push(decodeURIComponent(u));return}
+    if(!navigator.onLine){save(load().concat(u));return}
+    const i=new Image();i.onerror=()=>save(load().concat(u));i.src=u}
+  function flush(){if(!navigator.onLine)return;const a=load();if(!a.length)return;save([]);a.forEach(send)}
+  const ev=(name)=>send(url((DE?"demo:"+DE+" · ":"")+APP+" · "+name,true));
+  window.addEventListener("online",flush);flush();
+  /* visita */
+  if(DE)ev("abrió la app");else send(url(location.pathname,false,document.title));
+  /* pestañas */
+  const TAB={"":"Viaje",viaje:"Viaje",mapa:"Mapa",reservas:"Reservas",trenes:"Trenes",sos:"SOS"};let lastTab=null;
+  function tab(){const h=decodeURIComponent(location.hash.slice(1));const n=TAB[h];if(n&&n!==lastTab){lastTab=n;ev("pestaña "+n)}}
+  window.addEventListener("hashchange",tab);tab();
+  /* toques */
+  const once={};const ev1=n=>{if(once[n])return;once[n]=1;ev(n)};
+  document.addEventListener("click",e=>{const t=e.target;
+    const dh=t.closest(".dh");if(dh){const st=dh.closest("[id^=st]");const k=st?parseInt(st.id.replace(/\D/g,""),10):NaN;let n=(typeof ST!=="undefined"&&ST[k])?ST[k].n:"";if(!n)n=(dh.querySelector(".t b")||dh.querySelector("b")||dh).textContent.trim().slice(0,40);ev1("abrió parada: "+n)}
+    const a=t.closest("a[href]");if(a){const h=a.getAttribute("href");
+      if(/^tel:/.test(h))ev("llamó: "+(a.textContent||"").trim().slice(0,30));
+      else if(/maps|goo\.gl/.test(h))ev("cómo llegar: "+(a.getAttribute("aria-label")||(a.closest("[id^=st]")?.querySelector(".t b")?.textContent)||(a.closest(".rc,li,article,div")?.querySelector("b")?.textContent)||"lugar").replace(/^Abrir\s+/,"").replace(/\s+en Google Maps$/,"").trim().slice(0,40))}
+    if(t.closest("[data-pt]"))ev1("ver en el mapa");
+    if(t.closest("[data-mk2]"))ev1("filtro del mapa");
+    if(t.closest(".mebtn"))ev1("usó «Dónde estoy»");
+    if(t.closest("#thBtn,[aria-controls=thSheet],.thbtn"))ev1("abrió «Estilo app»");
+  },true);
+  /* «Dónde estoy» y cambio de estilo */
+  let th=document.documentElement.dataset.theme;
+  new MutationObserver(()=>{const n=document.documentElement.dataset.theme;if(n&&n!==th){th=n;ev("estilo: "+n)}}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+  /* tiempo de uso (solo con la app en pantalla) */
+  const MARKS=[1,5,15,30,60];let sec=0;
+  setInterval(()=>{if(document.visibilityState!=="visible")return;sec+=5;const m=sec/60;if(MARKS.includes(m))ev("usó "+m+" min")},5000);
+})();
 </script>
 </body>
 </html>
