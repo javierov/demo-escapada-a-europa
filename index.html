@@ -1299,84 +1299,82 @@ const C={
  "Madrid":{c:"#b8524a",s1:"#ffd2c8",s2:"#7a2c26",slug:"madrid",f:"madrid",p:"es",geo:[40.4168,-3.7038]}};
 const PAIS={es:"España",fr:"Francia",it:"Italia"};
 /* ciudades: nombre, noches, día de llegada, día de salida */
-const STOPS=[["Córdoba",2,19,21],["Sevilla",2,21,23],["Granada",2,23,25],["Barcelona",2,25,27],["Roma",2,27,29],["Florencia",2,29,31],["Venecia",2,31,33],["Lyon",1,33,34],["París",2,34,36],["Madrid",1,36,37]];
+const STOPS=[["Córdoba",1,19,20],["Sevilla",2,20,22],["Barcelona",3,22,25],["Roma",3,25,28],["Florencia",3,28,31],["Venecia",2,31,33],["Lyon",1,33,34],["París",2,34,36],["Madrid",1,36,37]];
 /* tramos en avión: del stop i al i+1 */
-const FLY=[3,8];
+const FLY=[2,7];
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
 const route=map; /* abre el lugar en Google Maps; ahí está el botón «Cómo llegar» */
 /* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, ciudad] */
 const DAYS=[
- {d:19,c:"Córdoba",cs:["Córdoba"],t:"Llegada y la Judería",w:"Callejas, patios y el Puente Romano al atardecer",it:[
-  ["✈️","Llegada por la mañana y viaje hasta Córdoba. Cómo y a qué hora: por confirmar.","",4,"Córdoba"],
-  ["🏨","Maletas al apartamento (Calleja la Pimentera, por confirmar la dirección).","",4,"Córdoba"],
-  ["🚶","Paseo por la Judería: la Calleja de las Flores, con la torre de la Mezquita al fondo, y la Sinagoga.","Calleja de las Flores Córdoba",0,"Córdoba"],
-  ["🌅","Atardecer en el Puente Romano y la Torre de la Calahorra. Anochece hacia las 18:00.","Puente Romano Córdoba",0,"Córdoba"],
+ {d:19,c:"Córdoba",cs:["Córdoba"],t:"Llegada, la Mezquita y la Judería",w:"Lo imprescindible de Córdoba en un día",it:[
+  ["✈️","Llegada por la mañana y viaje hasta Córdoba.","",0,"Córdoba"],
+  ["⛪","Mezquita-Catedral (la entrada en la web oficial evita la cola).","Mezquita-Catedral de Córdoba",1,"Córdoba"],
+  ["🚶","Paseo por la Judería: la Calleja de las Flores y la Sinagoga.","Calleja de las Flores Córdoba",0,"Córdoba"],
+  ["🌅","Atardecer en el Puente Romano y la Torre de la Calahorra.","Puente Romano Córdoba",0,"Córdoba"],
   ["🍽️","Cena de tapas típicas: salmorejo, flamenquín y rabo de toro, en la Taberna Salinas.","Taberna Salinas Córdoba",0,"Córdoba"]]},
- {d:20,c:"Córdoba",cs:["Córdoba"],t:"La Mezquita y el Alcázar",w:"Lo imprescindible de Córdoba, sin madrugar",it:[
-  ["⛪","Mezquita-Catedral a media mañana. Comprar la entrada en la web oficial evita la cola.","Mezquita-Catedral de Córdoba",2,"Córdoba"],
-  ["🏰","Alcázar de los Reyes Cristianos y sus jardines, a cinco minutos a pie.","Alcázar de los Reyes Cristianos",1,"Córdoba"],
-  ["🍽️","Almuerzo en el Mercado Victoria, con puestos de comida para todos los gustos.","Mercado Victoria Córdoba",0,"Córdoba"],
-  ["🌳","Palacio de Viana: doce patios cordobeses en una sola casa.","Palacio de Viana",1,"Córdoba"],
-  ["🍸","Noche: tablao flamenco en la Judería o la visita nocturna «El alma de Córdoba» en la Mezquita (no todos los días: mirar la web).","Tablao Flamenco Cardenal Córdoba",2,"Córdoba"]]},
- {d:21,c:"Sevilla",cs:["Córdoba","Sevilla"],t:"Tren a Sevilla y el barrio de Santa Cruz",w:"Tren corto y la primera tarde en Sevilla",it:[
-  ["☕","Desayuno tranquilo y paseo por la Plaza de la Corredera.","Plaza de la Corredera Córdoba",0,"Córdoba"],
-  ["🚄","Tren Córdoba → Sevilla Santa Justa a media mañana, unos 45 minutos.","Estación de Córdoba",3,"Córdoba"],
+ {d:20,c:"Sevilla",cs:["Córdoba","Sevilla"],t:"Tren a Sevilla y el barrio de Santa Cruz",w:"Primera tarde en Sevilla",it:[
+  ["☕","Última mañana en Córdoba: el Alcázar de los Reyes Cristianos o la Plaza de la Corredera.","Alcázar de los Reyes Cristianos",0,"Córdoba"],
+  ["🚄","Tren Córdoba → Sevilla Santa Justa a mediodía, unos 45 minutos.","Estación de Córdoba",3,"Córdoba"],
   ["🚶","Barrio de Santa Cruz: callejones, la plaza de Doña Elvira y el Patio de Banderas.","Barrio de Santa Cruz Sevilla",0,"Sevilla"],
   ["🌅","Plaza de España y el Parque de María Luisa al atardecer.","Plaza de España Sevilla",0,"Sevilla"],
   ["🍽️","Tapas en El Rinconcillo, el bar más antiguo de Sevilla (1670).","El Rinconcillo Sevilla",0,"Sevilla"]]},
- {d:22,c:"Sevilla",cs:["Sevilla"],t:"El Alcázar, la Catedral y Triana",w:"El gran día de Sevilla y flamenco por la noche",it:[
+ {d:21,c:"Sevilla",cs:["Sevilla"],t:"El Alcázar, la Catedral y Triana",w:"El gran día de Sevilla y flamenco por la noche",it:[
   ["🏰","Real Alcázar: palacios y jardines. Se agota: comprar la entrada con hora.","Real Alcázar de Sevilla",2,"Sevilla"],
   ["⛪","Catedral y subida a la Giralda (con entrada).","Catedral de Sevilla",1,"Sevilla"],
-  ["🍽️","Cruzar el puente de Isabel II y almorzar en Triana, por la calle San Jacinto (el mercado cierra los domingos).","Calle San Jacinto Sevilla",0,"Sevilla"],
+  ["🍽️","Cruzar el puente de Isabel II y almorzar en el Mercado de Triana.","Mercado de Triana",0,"Sevilla"],
   ["🌅","Setas de Sevilla (Metropol Parasol): el mirador al atardecer.","Setas de Sevilla",1,"Sevilla"],
   ["🍸","Noche de flamenco en la Casa de la Memoria (reservar) y copas por la Alameda de Hércules.","Casa de la Memoria Sevilla",2,"Sevilla"]]},
- {d:23,c:"Granada",cs:["Sevilla","Granada"],t:"Tren a Granada y el Albaicín",w:"El mirador de San Nicolás con la Alhambra iluminada",it:[
-  ["🏛️","Mañana sin prisas: la Casa de Pilatos, palacio sevillano con patios de azulejos.","Casa de Pilatos Sevilla",1,"Sevilla"],
-  ["🚄","Tren Sevilla Santa Justa → Granada a mediodía, unas 2 h 30.","Estación de Sevilla-Santa Justa",3,"Sevilla"],
-  ["🚶","Subida por el Albaicín, el barrio árabe, por la Carrera del Darro.","Carrera del Darro Granada",0,"Granada"],
-  ["🌅","Mirador de San Nicolás: la Alhambra al atardecer con Sierra Nevada detrás.","Mirador de San Nicolás",0,"Granada"],
-  ["🍽️","En Granada la tapa va gratis con cada bebida: ruta por la calle Navas.","Calle Navas Granada",0,"Granada"]]},
- {d:24,c:"Granada",cs:["Granada"],t:"La Alhambra",w:"Palacios Nazaríes, Generalife y el Sacromonte",it:[
-  ["🏰","Alhambra y Generalife. Los Palacios Nazaríes se visitan a una hora fija y las entradas se agotan: comprar ya en la web oficial.","Alhambra Granada",2,"Granada"],
-  ["⛪","Catedral y Capilla Real, donde están enterrados los Reyes Católicos.","Capilla Real de Granada",1,"Granada"],
-  ["🛍️","La Alcaicería, el antiguo zoco: cerámica, lámparas y recuerdos.","Alcaicería Granada",0,"Granada"],
-  ["🍸","Noche de flamenco en una cueva del Sacromonte (reservar).","Cuevas Los Tarantos Sacromonte",2,"Granada"]]},
- {d:25,c:"Barcelona",cs:["Granada","Barcelona"],t:"Tren largo a Barcelona",w:"Un día de viaje y la primera noche en el Gótico",it:[
-  ["☕","Desayuno de churros con chocolate en el Café Fútbol, en la plaza Mariana Pineda.","Café Fútbol Granada",0,"Granada"],
-  ["🚄","Tren Granada → Barcelona Sants, unas 6 h 30. Hay pocos directos al día: si no hay, con cambio en Madrid.","Estación de Granada",3,"Granada"],
+ {d:22,c:"Barcelona",cs:["Sevilla","Barcelona"],t:"Tren a Barcelona",w:"Mañana en Sevilla, noche en el Gótico",it:[
+  ["🏛️","Mañana sin prisas: la Casa de Pilatos, palacio con patios de azulejos (abre los domingos).","Casa de Pilatos Sevilla",1,"Sevilla"],
+  ["🚄","Tren Sevilla Santa Justa → Barcelona Sants, unas 5 h 30. Hay pocos directos: hora por confirmar.","Estación de Sevilla-Santa Justa",3,"Sevilla"],
   ["🚶","Paseo por La Rambla y el Barrio Gótico iluminado.","Barri Gòtic Barcelona",0,"Barcelona"],
   ["🍽️","Cena de tapas en El Born: El Xampanyet, junto al Museo Picasso.","El Xampanyet Barcelona",0,"Barcelona"]]},
- {d:26,c:"Barcelona",cs:["Barcelona"],t:"Gaudí de punta a punta",w:"Sagrada Família, Passeig de Gràcia y Park Güell",it:[
+ {d:23,c:"Barcelona",cs:["Barcelona"],t:"Gaudí de punta a punta",w:"Sagrada Família, Passeig de Gràcia y Park Güell",it:[
   ["⛪","Sagrada Família a media mañana (entrada con hora: reservar ya).","Sagrada Família",2,"Barcelona"],
   ["🏛️","Passeig de Gràcia: la Casa Batlló y La Pedrera. Por fuera son gratis; dentro, con entrada.","Casa Batlló",0,"Barcelona"],
   ["🛍️","Compras en el Passeig de Gràcia y la Rambla de Catalunya.","Passeig de Gràcia Barcelona",0,"Barcelona"],
   ["🌳","Park Güell por la tarde (entrada con hora; en noviembre cierra temprano).","Park Güell",2,"Barcelona"],
   ["🍸","Noche en El Born: Santa Maria del Mar y bares de copas alrededor.","Santa Maria del Mar Barcelona",0,"Barcelona"]]},
- {d:27,c:"Roma",cs:["Barcelona","Roma"],t:"La Boqueria y vuelo a Roma",w:"Mañana en Barcelona, noche en el Trastevere",it:[
+ {d:24,c:"Barcelona",cs:["Barcelona"],t:"La Boqueria, el Gótico y el mar",w:"El Barcelona de siempre y el mejor atardecer",it:[
   ["🍽️","La Boqueria por la mañana: fruta, zumos y algo de comer en la barra.","Mercat de la Boqueria",0,"Barcelona"],
-  ["🚶","Catedral de Barcelona y la plaza del Rei.","Catedral de Barcelona",0,"Barcelona"],
+  ["⛪","Catedral de Barcelona, la plaza del Rei y el Pont del Bisbe.","Catedral de Barcelona",0,"Barcelona"],
+  ["🖼️","Museo Picasso, en cinco palacios góticos del Born (con entrada).","Museu Picasso Barcelona",1,"Barcelona"],
+  ["🚶","Paseo por la Barceloneta y el puerto.","Barceloneta",0,"Barcelona"],
+  ["🌅","Atardecer en los Búnkers del Carmel, con toda la ciudad a los pies.","Bunkers del Carmel",0,"Barcelona"],
+  ["🍸","Noche en Gràcia: plazas con terrazas y bares pequeños.","Plaça del Sol Barcelona",0,"Barcelona"]]},
+ {d:25,c:"Roma",cs:["Barcelona","Roma"],t:"Montjuïc y vuelo a Roma",w:"Mañana en Barcelona, noche en el Trastevere",it:[
+  ["🌳","Montjuïc por la mañana: el mirador del castillo o el Poble Espanyol.","Castell de Montjuïc",0,"Barcelona"],
   ["✈️","Vuelo Barcelona → Roma, unas 2 horas. Vuelo y hora por confirmar. Del aeropuerto de Fiumicino a Roma Termini, el Leonardo Express tarda 32 minutos.","Aeropuerto de Barcelona-El Prat",4,"Barcelona"],
   ["🍸","Primera noche en el Trastevere: trattorias y calles con ambiente.","Trastevere",0,"Roma"]]},
- {d:28,c:"Roma",cs:["Roma"],t:"El Coliseo y la Roma de las plazas",w:"De la Roma antigua a la Fontana di Trevi",it:[
+ {d:26,c:"Roma",cs:["Roma"],t:"El Coliseo y la Roma de las plazas",w:"De la Roma antigua a la Fontana di Trevi",it:[
   ["🏛️","Coliseo, Foro Romano y Palatino a las 10:00 (entrada con hora: reservar).","Colosseo",2,"Roma"],
   ["🍽️","Almuerzo en el barrio de Monti.","Monti Roma",0,"Roma"],
   ["🚶","Fontana di Trevi (tirar la moneda), el Panteón y la Piazza Navona.","Fontana di Trevi",0,"Roma"],
   ["🛍️","Plaza de España y compras en la Via del Corso y la Via Condotti.","Piazza di Spagna",0,"Roma"],
   ["🍸","Noche: aperitivo en Campo de' Fiori.","Campo de' Fiori",0,"Roma"]]},
- {d:29,c:"Florencia",cs:["Roma","Florencia"],t:"El Vaticano y tren a Florencia",w:"San Pedro por la mañana, Florencia de noche",it:[
-  ["⛪","Basílica de San Pedro y la plaza. Los domingos a mediodía el Papa reza el Ángelus desde la ventana.","Basilica di San Pietro",0,"Roma"],
-  ["🖼️","Museos Vaticanos: hoy es el último domingo del mes y abren gratis por la mañana, con mucha cola. Mirar la web antes de ir.","Musei Vaticani",4,"Roma"],
+ {d:27,c:"Roma",cs:["Roma"],t:"El Vaticano",w:"Museos Vaticanos, San Pedro y el Tíber",it:[
+  ["🖼️","Museos Vaticanos y la Capilla Sixtina a media mañana (reservar).","Musei Vaticani",2,"Roma"],
+  ["⛪","Basílica de San Pedro y la plaza.","Basilica di San Pietro",0,"Roma"],
+  ["🏰","Castel Sant'Angelo y su puente de ángeles sobre el Tíber.","Castel Sant'Angelo",1,"Roma"],
+  ["🍽️","Cena en el Trastevere o en el Ghetto judío (alcachofas a la judía).","Ghetto Ebraico Roma",0,"Roma"]]},
+ {d:28,c:"Florencia",cs:["Roma","Florencia"],t:"Villa Borghese y tren a Florencia",w:"Última mañana en Roma, Florencia de noche",it:[
+  ["🌳","Villa Borghese y el mirador del Pincio sobre la Piazza del Popolo.","Terrazza del Pincio",0,"Roma"],
   ["🚄","Tren Roma Termini → Firenze Santa Maria Novella por la tarde, 1 h 30.","Roma Termini",3,"Roma"],
   ["🌅","Ponte Vecchio y la Piazza della Signoria iluminados.","Ponte Vecchio",0,"Florencia"],
   ["🍽️","Cena toscana en el Oltrarno, al otro lado del río.","Piazza Santo Spirito Firenze",0,"Florencia"]]},
- {d:30,c:"Florencia",cs:["Florencia"],t:"El Duomo y el Palazzo Vecchio",w:"El centro de Florencia y el mejor atardecer",it:[
+ {d:29,c:"Florencia",cs:["Florencia"],t:"El Duomo y los Uffizi",w:"El Renacimiento en un día",it:[
   ["⛪","El Duomo y la cúpula de Brunelleschi (la subida, con hora: reservar).","Cattedrale di Santa Maria del Fiore",2,"Florencia"],
   ["🍽️","Almuerzo en la planta alta del Mercado Central.","Mercato Centrale Firenze",0,"Florencia"],
-  ["🛍️","Tiendas de cuero del mercado de San Lorenzo.","Mercato di San Lorenzo Firenze",0,"Florencia"],
-  ["🏛️","Palazzo Vecchio, el ayuntamiento de los Médici (con entrada). Hoy lunes los Uffizi y la Accademia cierran.","Palazzo Vecchio",1,"Florencia"],
+  ["🖼️","Galería de los Uffizi: Botticelli, Leonardo y Miguel Ángel (reservar).","Galleria degli Uffizi",2,"Florencia"],
   ["🌅","Piazzale Michelangelo al atardecer: la mejor vista de la ciudad.","Piazzale Michelangelo",0,"Florencia"]]},
- {d:31,c:"Venecia",cs:["Florencia","Venecia"],t:"Los Uffizi y tren a Venecia",w:"Botticelli por la mañana, canales por la noche",it:[
-  ["🖼️","Galería de los Uffizi a media mañana: Botticelli, Leonardo y Miguel Ángel (reservar). Otra opción: la Accademia y el David.","Galleria degli Uffizi",2,"Florencia"],
+ {d:30,c:"Florencia",cs:["Florencia"],t:"Excursión a Siena",w:"Un pueblo medieval de la Toscana",it:[
+  ["🚌","Bus a Siena, 1 h 15 (sale cerca de Santa Maria Novella). Hoy lunes los Uffizi y la Accademia cierran.","Autostazione Firenze",3,"Florencia"],
+  ["🏛️","La Piazza del Campo, en forma de concha, y la Torre del Mangia.","Piazza del Campo Siena",0,"Florencia"],
+  ["⛪","Catedral de Siena, de mármol blanco y negro (con entrada).","Duomo di Siena",1,"Florencia"],
+  ["🍽️","Almuerzo toscano y pici, la pasta típica de Siena.","Siena centro storico",0,"Florencia"],
+  ["🛍️","Vuelta a Florencia por la tarde: tiendas de cuero del mercado de San Lorenzo.","Mercato di San Lorenzo Firenze",0,"Florencia"]]},
+ {d:31,c:"Venecia",cs:["Florencia","Venecia"],t:"El David y tren a Venecia",w:"Miguel Ángel por la mañana, canales por la noche",it:[
+  ["🖼️","Galleria dell'Accademia y el David de Miguel Ángel a media mañana (reservar).","Galleria dell'Accademia Firenze",2,"Florencia"],
   ["🚄","Tren Firenze Santa Maria Novella → Venezia Santa Lucia por la tarde, unas 2 horas.","Firenze Santa Maria Novella",3,"Florencia"],
   ["🚶","Llegada a Venecia: la estación está sobre el Gran Canal. Vaporetto hasta el alojamiento.","Venezia Santa Lucia",0,"Venecia"],
   ["🍸","Noche de bacari en Cannaregio: cicchetti (tapas venecianas) y spritz.","Fondamenta della Misericordia",0,"Venecia"]]},
@@ -1412,52 +1410,51 @@ const DAYS=[
   ["🧳","Salida al aeropuerto de Barajas con tiempo: metro línea 8 o el autobús Exprés Aeropuerto. Vuelo y hora por confirmar.","Aeropuerto Adolfo Suárez Madrid-Barajas",4,"Madrid"]]}];
 /* parte del día de cada plan, en orden: m = mañana, t = tarde, n = noche */
 const NOMBRE="Andrea";
-const PARTS={19:"mmttn",20:"mmttn",21:"mmttn",22:"mmttn",23:"mtttn",24:"mttn",25:"mmnn",26:"mtttn",27:"mmtn",28:"mtttn",29:"mmtnn",30:"mtttt",31:"mttn",32:"mmmtt",33:"mmn",34:"mmttn",35:"mttnn",36:"mmtnn",37:"m"};
+const PARTS={19:"mmttn",20:"mmttn",21:"mmttn",22:"mttn",23:"mtttn",24:"mmttnn",25:"mtn",26:"mtttn",27:"mmtn",28:"mtnn",29:"mttt",30:"mmmtt",31:"mttn",32:"mmmtt",33:"mmn",34:"mmttn",35:"mttnn",36:"mmtnn",37:"m"};
 const TAG=["","Con entrada","Reservar ya","Comprar billete","Por confirmar"];
 
 /* reservas: id, grupo, nombre, detalle, enlace */
 const RES=[
- ["al-cor","aloj","Córdoba · 19–21 nov","Calleja la Pimentera (por confirmar)",""],
- ["al-sev","aloj","Sevilla · 21–23 nov","",""],
- ["al-gra","aloj","Granada · 23–25 nov","",""],
- ["al-bcn","aloj","Barcelona · 25–27 nov","",""],
- ["al-rom","aloj","Roma · 27–29 nov","",""],
- ["al-flo","aloj","Florencia · 29 nov – 1 dic","",""],
+ ["al-cor","aloj","Córdoba · 19–20 nov","Calleja la Pimentera",""],
+ ["al-sev","aloj","Sevilla · 20–22 nov","",""],
+ ["al-bcn","aloj","Barcelona · 22–25 nov","",""],
+ ["al-rom","aloj","Roma · 25–28 nov","",""],
+ ["al-flo","aloj","Florencia · 28 nov – 1 dic","",""],
  ["al-ven","aloj","Venecia · 1–3 dic","",""],
  ["al-lyo","aloj","Lyon · 3–4 dic","",""],
  ["al-par","aloj","París · 4–6 dic","",""],
  ["al-mad","aloj","Madrid · 6–7 dic","",""],
- ["tr-1","tren","Tren Córdoba → Sevilla · sáb 21","Renfe o Iryo","https://www.renfe.com"],
- ["tr-2","tren","Tren Sevilla → Granada · lun 23","Renfe","https://www.renfe.com"],
- ["tr-3","tren","Tren Granada → Barcelona · mié 25","Renfe","https://www.renfe.com"],
- ["tr-4","tren","Vuelo Barcelona → Roma · vie 27","Por confirmar",""],
- ["tr-5","tren","Tren Roma → Florencia · dom 29","Trenitalia o Italo","https://www.trenitalia.com"],
- ["tr-6","tren","Tren Florencia → Venecia · mar 1","Trenitalia o Italo","https://www.italotreno.com"],
- ["tr-7","tren","Tren Venecia → Lyon · jue 3","Trenitalia o SNCF, con cambio en Milán","https://www.trenitalia.com"],
- ["tr-8","tren","Tren Lyon → París · vie 4","SNCF (TGV o Ouigo)","https://www.sncf-connect.com"],
- ["tr-9","tren","Vuelo París → Madrid · dom 6","Por confirmar",""],
- ["en-1","ent","Alhambra · Granada, mar 24","Se agota con días de antelación: lo más urgente","https://www.alhambra-patronato.es"],
- ["en-2","ent","Mezquita-Catedral · Córdoba, vie 20","","https://mezquita-catedraldecordoba.es"],
- ["en-3","ent","Real Alcázar · Sevilla, dom 22","","https://www.alcazarsevilla.org"],
- ["en-4","ent","Flamenco · Sevilla y Granada","Casa de la Memoria; cueva del Sacromonte",""],
- ["en-5","ent","Sagrada Família · Barcelona, jue 26","","https://sagradafamilia.org"],
- ["en-6","ent","Park Güell · Barcelona, jue 26","","https://parkguell.barcelona"],
- ["en-7","ent","Coliseo y Foro · Roma, sáb 28","","https://colosseo.it"],
- ["en-8","ent","Cúpula del Duomo · Florencia, lun 30","","https://duomo.firenze.it"],
- ["en-9","ent","Uffizi · Florencia, mar 1","","https://www.uffizi.it"],
- ["en-10","ent","Basílica de San Marcos · Venecia, mié 2","","https://www.basilicasanmarco.it"],
- ["en-11","ent","Louvre · París, sáb 5","","https://www.louvre.fr"],
- ["en-12","ent","Torre Eiffel · París, sáb 5","","https://www.toureiffel.paris"]];
+ ["tr-1","tren","Tren Córdoba → Sevilla · vie 20","Renfe o Iryo","https://www.renfe.com"],
+ ["tr-2","tren","Tren Sevilla → Barcelona · dom 22","Renfe (pocos directos)","https://www.renfe.com"],
+ ["tr-3","tren","Vuelo Barcelona → Roma · mié 25","Por confirmar",""],
+ ["tr-4","tren","Tren Roma → Florencia · sáb 28","Trenitalia o Italo","https://www.trenitalia.com"],
+ ["tr-5","tren","Tren Florencia → Venecia · mar 1","Trenitalia o Italo","https://www.italotreno.com"],
+ ["tr-6","tren","Tren Venecia → Lyon · jue 3","Trenitalia o SNCF, con cambio en Milán","https://www.trenitalia.com"],
+ ["tr-7","tren","Tren Lyon → París · vie 4","SNCF (TGV o Ouigo)","https://www.sncf-connect.com"],
+ ["tr-8","tren","Vuelo París → Madrid · dom 6","Por confirmar",""],
+ ["en-1","ent","Real Alcázar · Sevilla, sáb 21","Se agota: lo más urgente","https://www.alcazarsevilla.org"],
+ ["en-2","ent","Catedral y Giralda · Sevilla, sáb 21","","https://www.catedraldesevilla.es"],
+ ["en-3","ent","Flamenco · Sevilla, sáb 21","Casa de la Memoria",""],
+ ["en-4","ent","Sagrada Família · Barcelona, lun 23","","https://sagradafamilia.org"],
+ ["en-5","ent","Park Güell · Barcelona, lun 23","","https://parkguell.barcelona"],
+ ["en-6","ent","Coliseo y Foro · Roma, jue 26","","https://colosseo.it"],
+ ["en-7","ent","Museos Vaticanos · Roma, vie 27","","https://www.museivaticani.va"],
+ ["en-8","ent","Cúpula del Duomo · Florencia, dom 29","","https://duomo.firenze.it"],
+ ["en-9","ent","Uffizi · Florencia, dom 29","","https://www.uffizi.it"],
+ ["en-10","ent","Accademia (el David) · Florencia, mar 1","","https://www.galleriaaccademiafirenze.it"],
+ ["en-11","ent","Basílica de San Marcos · Venecia, mié 2","","https://www.basilicasanmarco.it"],
+ ["en-12","ent","Louvre · París, sáb 5","","https://www.louvre.fr"],
+ ["en-13","ent","Torre Eiffel · París, sáb 5","","https://www.toureiffel.paris"]];
 const RG={aloj:["Alojamiento","bed"],tren:["Trenes y vuelo","train"],ent:["Entradas","ticket"]};
 
 /* trayectos: día, de, a, estaciones, duración, empresas, consejo */
 const LEGS=[
- [19,"Llegada","Córdoba","Por confirmar","","","Cómo llegas a Córdoba y a qué hora: por confirmar.",0],
- [21,"Córdoba","Sevilla","Córdoba → Sevilla Santa Justa","45 min","Renfe (AVE y Avant) · Iryo","Muchos trenes al día: no hace falta madrugar.",0],
- [23,"Sevilla","Granada","Sevilla Santa Justa → Granada","2 h 30","Renfe","También hay autobús de Alsa, unas 3 horas.",0],
- [25,"Granada","Barcelona","Granada → Barcelona Sants","6 h 30","Renfe","Pocos directos al día; si no, con cambio en Madrid. Llevar comida.",0],
- [27,"Barcelona","Roma","Aeropuerto de El Prat → Roma Fiumicino","2 h de vuelo","Por confirmar","Al aeropuerto de Barcelona: tren R2 Nord o Aerobús desde plaza Catalunya. En Roma: Leonardo Express a Termini, 32 minutos.",1],
- [29,"Roma","Florencia","Roma Termini → Firenze Santa Maria Novella","1 h 30","Trenitalia (Frecciarossa) · Italo","Salen trenes cada poco rato.",0],
+ [19,"Llegada","Córdoba","Por confirmar","","","",0],
+ [20,"Córdoba","Sevilla","Córdoba → Sevilla Santa Justa","45 min","Renfe (AVE y Avant) · Iryo","Muchos trenes al día.",0],
+ [22,"Sevilla","Barcelona","Sevilla Santa Justa → Barcelona Sants","5 h 30","Renfe (AVE)","Pocos directos al día; si no, con cambio en Madrid. Comprar pronto y llevar comida.",0],
+ [25,"Barcelona","Roma","Aeropuerto de El Prat → Roma Fiumicino","2 h de vuelo","Por confirmar","Al aeropuerto de Barcelona: tren R2 Nord o Aerobús desde plaza Catalunya. En Roma: Leonardo Express a Termini, 32 minutos.",1],
+ [28,"Roma","Florencia","Roma Termini → Firenze Santa Maria Novella","1 h 30","Trenitalia (Frecciarossa) · Italo","Salen trenes cada poco rato.",0],
+ [30,"Florencia","Siena","Bus Florencia → Siena (ida y vuelta)","1 h 15","Autolinee Toscane","Sale desde cerca de Santa Maria Novella; el bus deja más cerca del centro que el tren.",0],
  [31,"Florencia","Venecia","Firenze Santa Maria Novella → Venezia Santa Lucia","2 h","Trenitalia (Frecciarossa) · Italo","En Italia, los billetes regionales se validan antes de subir; los de alta velocidad, no.",0],
  [33,"Venecia","Lyon","Venezia Santa Lucia → Milano Centrale → Lyon Part-Dieu","7 h 30","Trenitalia (Frecciarossa) · SNCF","La línea de los Alpes reabrió en 2025. Hay pocos trenes al día: elegir el horario antes de nada.",0],
  [34,"Lyon","París","Lyon Part-Dieu → París Gare de Lyon","2 h","SNCF (TGV inOui y Ouigo)","Ouigo es más barato, pero cobra aparte el equipaje grande.",0],
@@ -1475,7 +1472,7 @@ const SOS=[
 
 /* ---------- iconos ---------- */
 const P={plane:'<path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/>',train:'<rect x="5" y="3" width="14" height="14" rx="4"/><path d="M5 10h14M9 21l1.5-4M15 21l-1.5-4"/><circle cx="9" cy="13.5" r=".8"/><circle cx="15" cy="13.5" r=".8"/>',walk:'<circle cx="13" cy="4" r="2"/><path d="M9 21l3-7 3 3v5M7 12l4-4h3l2 4 2 1M11 8l1 6"/>',bed:'<path d="M3 19V7M3 15h18v4M21 15v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="12" r="2"/>',art:'<path d="M12 3a9 9 0 1 0 0 18c1.1 0 2-.8 2-1.9 0-1.4-1.1-1.6-1.1-2.7 0-1 .8-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.5 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',castle:'<path d="M3 21h18M5 21V10M9.5 21V10M14.5 21V10M19 21V10M3 10l9-6 9 6z"/>',bag:'<path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"/>',food:'<path d="M7 3v18M5 3v5a2 2 0 0 0 4 0V3M17 21V3c-2 1-3 4-3 7h3"/>',sun:'<path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 6v3M5 10l2 2M19 10l-2 2M3 14h2M19 14h2"/>',moon:'<path d="M20 14A8 8 0 1 1 10 4a6 6 0 0 0 10 10z"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',case:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5h6v2M4 12h16"/>',church:'<path d="M12 2v5M10 4h4M6 21V12l6-5 6 5v9zM10 21v-4a2 2 0 0 1 4 0v4"/>',tree:'<path d="M12 21v-6M7 15h10l-5-12z"/><path d="M8.5 11h7"/>',cup:'<path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3M12 3v3"/>',pin:'<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',back:'<path d="M15 5l-7 7 7 7"/>',chev:'<path d="M9 6l6 6-6 6"/>',go:'<path d="M3 11l18-8-8 18-2-8z"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>',ticket:'<path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M13 6v12"/>',sunny:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',phone:'<path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/>',check:'<path d="M5 12.5l4.5 4.5L19 7"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"/>',shield:'<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/>',link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',tower:'<path d="M12 2v3M10 5h4l2 7H8zM8 12l-4 9h5l3-5 3 5h5l-4-9"/>'};
-const EM={"✈️":"plane","🎄":"tree","🏰":"castle","☕":"cup","🏨":"bed","🚶":"walk","🌅":"sun","🖼️":"art","🍸":"moon","🌳":"tree","🍽️":"food","🚄":"train","⛪":"church","🏛️":"castle","🧳":"case","🛍️":"bag","🗼":"tower"};
+const EM={"✈️":"plane","🚌":"train","🎄":"tree","🏰":"castle","☕":"cup","🏨":"bed","🚶":"walk","🌅":"sun","🖼️":"art","🍸":"moon","🌳":"tree","🍽️":"food","🚄":"train","⛪":"church","🏛️":"castle","🧳":"case","🛍️":"bag","🗼":"tower"};
 const ico=(k,w)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w||1.9}" stroke-linecap="round" stroke-linejoin="round">${P[k]||P.info}</svg>`;
 
 /* ilustración genérica de ciudad (se ve mientras carga la foto o si falta) */
